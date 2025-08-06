@@ -49,6 +49,9 @@ if purchase_file is not None and sale_file is not None:
     purchase_df = purchase_file_to_df(purchase_file)
     sale_df = sales_file_to_df(sale_file)
 
+    sale_df['Discount Amount'] = sale_df['Discount Amount'].fillna(0)
+
+
     purchase_tax_amount = purchase_df['CGST'].sum() + purchase_df['SGST'].sum() + purchase_df['UTGST'].sum() + purchase_df['IGST'].sum() + purchase_df['CESS'].sum()
 
     sale_tax_amount = sale_df['Tax Amount'].sum()
